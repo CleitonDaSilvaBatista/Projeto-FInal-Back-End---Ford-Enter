@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -47,6 +48,37 @@ var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 var connectionString = !string.IsNullOrEmpty(databaseUrl)
     ? ConvertDatabaseUrlToConnectionString(databaseUrl)
     : builder.Configuration.GetConnectionString("DefaultConnection");
+
+static string NormalizeConnectionString(string value)
+{
+    if (string.IsNullOrWhiteSpace(value))
+        throw new InvalidOperationException("Connection string não configurada.");
+
+    if (value.StartsWith("postgres://", StringComparison.OrdinalIgnoreCase) ||
+        value.StartsWith("postgresql://", StringComparison.OrdinalIgnoreCase))
+    {
+        var uri = new Uri(value);
+        var userInfo = uri.UserInfo.Split(':', 2);
+
+        if (userInfo.Length < 2)
+            throw new InvalidOperationException("DATABASE_URL inválida: usuário ou senha ausente.");
+
+        return $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.TrimStart('/')};Username={Uri.UnescapeDataString(userInfo[0])};Password={Uri.UnescapeDataString(userInfo[1])};SSL Mode=Require;Trust Server Certificate=true";
+    }
+
+    return value
+        .Replace("User ID=", "Username=", StringComparison.OrdinalIgnoreCase)
+        .Replace("User Id=", "Username=", StringComparison.OrdinalIgnoreCase)
+        .Replace("User=", "Username=", StringComparison.OrdinalIgnoreCase)
+        .Replace("user=", "Username=", StringComparison.OrdinalIgnoreCase);
+}
+
+var rawConnectionString =
+    Environment.GetEnvironmentVariable("DATABASE_URL")
+    ?? Environment.GetEnvironmentVariable("DATABASE_PUBLIC_URL")
+    ?? builder.Configuration.GetConnectionString("DefaultConnection");
+
+var connectionString = NormalizeConnectionString(rawConnectionString!);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
