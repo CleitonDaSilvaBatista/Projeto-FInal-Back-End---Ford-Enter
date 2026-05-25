@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laranja Bank | Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="app" data-section="operacoes">
+  <header class="app-header"><div class="header-inner">
+    <a class="brand" href="/operacoes.html"><span class="brand-mark">LB</span><span>Laranja Bank</span></a>
+    
+<nav class="app-nav">
+  <div class="user-session">
+    <i class="bi bi-person-circle"></i>
+    <span id="navbarUser">Olá usuário</span>
+  </div>
+
+  <button class="logout-btn" onclick="sair()">
+    <i class="bi bi-box-arrow-right"></i>
+    Logout
+  </button>
+</nav>
+
+  </div></header>
+  <main class="app-shell">
+    <section class="app-top">
+      <div class="hero-panel"><span class="eyebrow dark">Internet banking</span><h1>Dashboard</h1><p>Visão geral da sua conta e atalhos para todas as operações.</p></div>
+      <div class="action-card"><h2>Escolher ação</h2><p>Use este seletor para ir direto para a operação desejada.</p><select id="actionSelect" class="action-select"><option value="/operacoes.html" selected>Dashboard</option><option value="/contas.html" >Contas</option><option value="/deposito.html" >Depósito</option><option value="/saque.html" >Saque</option><option value="/transferencia.html" >Transferência</option><option value="/extrato.html" >Extrato</option><option value="/cartoes.html" >Cartões</option><option value="/perfil.html" >Perfil</option></select></div>
+    </section>
+    <section class="quick-actions"><a href="/operacoes.html" class="active"><i class="bi bi-grid-1x2-fill"></i><span>Dashboard</span></a><a href="/contas.html" class=""><i class="bi bi-wallet2"></i><span>Contas</span></a><a href="/deposito.html" class=""><i class="bi bi-arrow-down-circle"></i><span>Depósito</span></a><a href="/saque.html" class=""><i class="bi bi-arrow-up-circle"></i><span>Saque</span></a><a href="/transferencia.html" class=""><i class="bi bi-arrow-left-right"></i><span>Transferência</span></a><a href="/extrato.html" class=""><i class="bi bi-receipt"></i><span>Extrato</span></a><a href="/cartoes.html" class=""><i class="bi bi-credit-card"></i><span>Cartões</span></a><a href="/perfil.html" class=""><i class="bi bi-person-circle"></i><span>Perfil</span></a></section>
+    
+<section class="metrics">
+  <article class="metric"><span>Saldo total</span><strong id="metricSaldo">R$ 0,00</strong></article>
+  <article class="metric"><span>Contas ativas</span><strong id="metricContas">0</strong></article>
+  <article class="metric"><span>Usuário</span><strong id="welcomeName">Cliente</strong></article>
+</section>
+<section class="bank-grid">
+  <div class="bank-panel"><div class="panel-heading"><div><h2>Minhas contas</h2><p>Selecione uma conta para movimentar.</p></div><button class="mini-btn" onclick="listarContas()"><i class="bi bi-arrow-clockwise"></i> Atualizar</button></div><div id="contas" class="account-list"></div></div>
+  <div class="bank-panel"><div class="panel-heading"><div><h2>Ações rápidas</h2><p>As operações agora ficam separadas em páginas próprias.</p></div></div><div class="form-grid"><a class="btn-primary full" href="/deposito.html"><i class="bi bi-arrow-down-circle"></i> Fazer depósito</a><a class="btn-secondary full" href="/saque.html"><i class="bi bi-arrow-up-circle"></i> Fazer saque</a><a class="btn-secondary full" href="/transferencia.html"><i class="bi bi-arrow-left-right"></i> Transferir</a><a class="btn-secondary full" href="/extrato.html"><i class="bi bi-receipt"></i> Ver extrato</a></div></div>
+</section>
+  </main>
+  <div id="toastArea" class="toast-area"></div>
+  <script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+body{
+    background: #0f172a;
+    color: white;
+    font-family: Arial;
+    margin: 0;
+    padding: 40px;
+}
+
+.cartao-section{
+    width: 420px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input{
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+}
+
+button{
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.card-cartao{
+    background: linear-gradient(135deg,#1e293b,#334155);
+    padding: 20px;
+    border-radius: 14px;
+    margin-top: 10px;
+}

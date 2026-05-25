@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laranja Bank | Banco digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="home">
+  <header class="site-header">
+    <a class="brand" href="/index.html"><span class="brand-mark">LB</span><span>Laranja Bank</span></a>
+    <nav class="nav-links">
+      <a class="nav-link active" href="/index.html">Início</a>
+      <a class="nav-link" href="#servicos">Serviços</a>
+      <a class="nav-link" href="/login.html">Acessar conta</a>
+      <a class="nav-cta" href="/cadastro.html">Abra sua conta</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-bank">
+      <div class="hero-content">
+        <span class="eyebrow">Banco digital seguro</span>
+        <h1>Seu dinheiro no controle, com a cara de um banco moderno.</h1>
+        <p>Conta, cartão, depósitos, saques e extrato em uma experiência visual profissional inspirada em grandes bancos digitais.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="/cadastro.html">Abrir conta grátis</a>
+          <a class="btn-secondary" href="/login.html">Já sou cliente</a>
+        </div>
+        <div class="trust-row">
+          <span><i class="bi bi-shield-check"></i> Login protegido</span>
+          <span><i class="bi bi-phone"></i> 100% online</span>
+          <span><i class="bi bi-receipt"></i> Extrato em tempo real</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80" alt="Cliente usando banco digital">
+        <div class="floating-card card-balance">
+          <small>Saldo disponível</small>
+          <strong>R$ 8.450,00</strong>
+          <span>Conta corrente</span>
+        </div>
+        <div class="floating-card card-pix"><i class="bi bi-lightning-charge-fill"></i> Transferência aprovada</div>
+      </div>
+    </section>
+
+    <section class="carousel-section">
+      <div class="section-heading">
+        <span>Novidades</span>
+        <h2>Soluções para o seu dia a dia</h2>
+      </div>
+      <div class="carousel" aria-label="Carrossel de benefícios">
+        <button class="carousel-btn prev" type="button" aria-label="Slide anterior"><i class="bi bi-chevron-left"></i></button>
+        <div class="carousel-track">
+          <article class="slide active">
+            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1000&q=80" alt="Cartão de crédito">
+            <div><h3>Cartão virtual para compras online</h3><p>Use uma experiência parecida com bancos reais, com chamadas para cartão, segurança e praticidade.</p></div>
+          </article>
+          <article class="slide">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1000&q=80" alt="Organização financeira">
+            <div><h3>Controle sua vida financeira</h3><p>Veja saldos, crie contas e acompanhe cada movimentação direto na área bancária.</p></div>
+          </article>
+          <article class="slide">
+            <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1000&q=80" alt="Atendimento bancário digital">
+            <div><h3>Atendimento digital e seguro</h3><p>Interface limpa, botões claros e navegação direta para login, cadastro e operações.</p></div>
+          </article>
+        </div>
+        <button class="carousel-btn next" type="button" aria-label="Próximo slide"><i class="bi bi-chevron-right"></i></button>
+        <div class="carousel-dots" aria-label="Indicadores do carrossel"></div>
+      </div>
+    </section>
+
+    <section id="servicos" class="services-grid">
+      <article class="service-card"><i class="bi bi-credit-card-2-front"></i><h3>Conta digital</h3><p>Crie contas corrente, poupança ou empresarial com saldo inicial.</p></article>
+      <article class="service-card"><i class="bi bi-cash-coin"></i><h3>Depósito e saque</h3><p>Realize operações bancárias conectadas ao backend da API.</p></article>
+      <article class="service-card"><i class="bi bi-graph-up-arrow"></i><h3>Extrato</h3><p>Acompanhe o histórico de transações da conta selecionada.</p></article>
+      <article class="service-card"><i class="bi bi-lock"></i><h3>Segurança</h3><p>Login com token JWT salvo para proteger as operações.</p></article>
+    </section>
+
+    <section class="app-banner">
+      <div><span class="eyebrow dark">Área do cliente</span><h2>Entre e faça suas operações bancárias agora.</h2><p>O visual é de banco, mas o sistema continua funcionando com seu backend original.</p></div>
+      <a class="btn-light" href="/operacoes.html">Ir para operações</a>
+    </section>
+  </main>
+
+  <footer class="footer-bank">© 2026 Laranja Bank • Banco digital acadêmico funcional</footer>
+  <div id="toastArea" class="toast-area"></div>
+  <script src="/js/app.js"></script>
+</body>
+</html>
