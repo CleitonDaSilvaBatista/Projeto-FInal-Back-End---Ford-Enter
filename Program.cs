@@ -35,14 +35,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-static string ConvertDatabaseUrlToConnectionString(string databaseUrl)
-{
-    var uri = new Uri(databaseUrl);
-    var userInfo = uri.UserInfo.Split(':');
-
-    return $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.TrimStart('/')};Username={userInfo[0]};Password={userInfo[1]};SSL Mode=Require;Trust Server Certificate=true";
-}
-
 var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
 var connectionString = !string.IsNullOrEmpty(databaseUrl)

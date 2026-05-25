@@ -1,0 +1,7 @@
+Correções aplicadas:
+- Removido ConvertDatabaseUrlToConnectionString antigo do Program.cs.
+- Removida declaração duplicada de connectionString.
+- Removido UseMySql.
+- Mantido apenas NormalizeConnectionString + UseNpgsql.
+- Limpos PackageReference duplicados no .csproj.
+- Removidos pacotes MySQL/Pomelo/MySqlConnector do .csproj.
