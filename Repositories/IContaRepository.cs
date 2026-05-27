@@ -10,4 +10,5 @@ public interface IContaRepository
     Task AtualizarAsync(Conta conta);
     Task RemoverAsync(Conta conta);
     Task<List<Conta>> ListarTodasAsync();
+    Task<bool> ExisteTipoParaUsuarioAsync(int usuarioId, TipoConta tipo);
 }

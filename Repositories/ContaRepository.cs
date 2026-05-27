@@ -17,4 +17,7 @@ public class ContaRepository : IContaRepository
 {
     return await _context.Contas.ToListAsync();
 }
+
+    public Task<bool> ExisteTipoParaUsuarioAsync(int usuarioId, TipoConta tipo) =>
+        _context.Contas.AnyAsync(c => c.UsuarioId == usuarioId && c.Tipo == tipo);
 }

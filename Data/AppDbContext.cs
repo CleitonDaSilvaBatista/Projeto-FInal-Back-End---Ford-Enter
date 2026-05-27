@@ -10,12 +10,16 @@ public class AppDbContext : DbContext
     public DbSet<Usuario> Usuarios => Set<Usuario>();
     public DbSet<Conta> Contas => Set<Conta>();
     public DbSet<Transacao> Transacoes => Set<Transacao>();
+    public DbSet<Cartao> Cartoes => Set<Cartao>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Usuario>().HasIndex(u => u.Email).IsUnique();
+        modelBuilder.Entity<Conta>().HasIndex(c => new { c.UsuarioId, c.Tipo }).IsUnique();
         modelBuilder.Entity<Conta>().Property(c => c.Saldo).HasPrecision(18, 2);
         modelBuilder.Entity<Transacao>().Property(t => t.Valor).HasPrecision(18, 2);
         modelBuilder.Entity<Transacao>().Property(t => t.Taxa).HasPrecision(18, 2);
+        modelBuilder.Entity<Cartao>().HasIndex(c => c.Numero).IsUnique();
+        modelBuilder.Entity<Cartao>().Property(c => c.Limite).HasPrecision(18, 2);
     }
 }

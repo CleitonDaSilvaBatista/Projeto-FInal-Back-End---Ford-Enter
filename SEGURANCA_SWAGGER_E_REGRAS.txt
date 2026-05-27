@@ -1,0 +1,26 @@
+Alteracoes realizadas:
+
+1. Uma pessoa nao consegue mais criar duas contas do mesmo tipo.
+   - Validacao no ContaService.
+   - Indice unico no banco: UsuarioId + Tipo.
+
+2. O usuario nao cadastra mais os dados do cartao manualmente.
+   - Novo endpoint: POST /api/cartoes/solicitar.
+   - O back-end gera nome do titular, numero, validade, CVV e limite automaticamente.
+   - A tela de cartoes agora tem apenas o botao para solicitar o cartao.
+
+3. Protecao contra alteracoes indevidas pelo Swagger.
+   - Endpoints de contas e cartoes continuam com [Authorize].
+   - Swagger voltou a ter configuracao Bearer Token.
+   - Deposito, saque e transferencia validam valores positivos.
+   - Transferencia nao aceita conta de destino menor que 1.
+   - Transferencia nao aceita origem igual ao destino.
+   - GET /api/contas/{id} valida se a conta pertence ao usuario logado.
+   - DELETE de conta/cartao valida se o recurso pertence ao usuario logado.
+
+4. Migracao adicionada:
+   - 20260527180000_AddCartoesERegrasSeguranca.cs
+
+Observacao importante:
+Se o banco atual ja tiver contas duplicadas do mesmo tipo para o mesmo usuario, a migracao do indice unico pode falhar.
+Nesse caso, apague as duplicadas antes de rodar a migracao ou recrie o banco do projeto.

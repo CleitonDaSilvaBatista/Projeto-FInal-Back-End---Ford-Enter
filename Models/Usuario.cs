@@ -10,4 +10,5 @@ public class Usuario
     [Required] public string SenhaHash { get; set; } = string.Empty;
     [Required, MaxLength(30)] public string Perfil { get; set; } = "Cliente";
     public List<Conta> Contas { get; set; } = new();
+    public List<Cartao> Cartoes { get; set; } = new();
 }

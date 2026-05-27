@@ -28,8 +28,15 @@ public class ContasController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Criar(CriarContaDto dto)
     {
-        var conta = await _service.CriarAsync(UsuarioId(), dto);
-        return CreatedAtAction(nameof(Obter), new { id = conta.Id }, conta);
+        try
+        {
+            var conta = await _service.CriarAsync(UsuarioId(), dto);
+            return CreatedAtAction(nameof(Obter), new { id = conta.Id }, conta);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { erro = ex.Message });
+        }
     }
 
     [HttpPost("{id:int}/depositar")]
@@ -94,5 +101,3 @@ public class ContasController : ControllerBase
     private int UsuarioId() => int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 }
 
-
-public class TransferenciaRequest { public int ContaDestinoId { get; set; } public decimal Valor { get; set; } }

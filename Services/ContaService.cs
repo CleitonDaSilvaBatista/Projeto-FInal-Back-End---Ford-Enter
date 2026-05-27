@@ -17,6 +17,15 @@ public class ContaService
 
     public async Task<ContaResponseDto> CriarAsync(int usuarioId, CriarContaDto dto)
     {
+        if (!Enum.IsDefined(typeof(TipoConta), dto.Tipo))
+            throw new InvalidOperationException("Tipo de conta invalido.");
+
+        if (dto.SaldoInicial < 0)
+            throw new InvalidOperationException("O saldo inicial nao pode ser negativo.");
+
+        if (await _contas.ExisteTipoParaUsuarioAsync(usuarioId, dto.Tipo))
+            throw new InvalidOperationException("Voce ja possui uma conta deste tipo.");
+
         var conta = new Conta { Tipo = dto.Tipo, Saldo = dto.SaldoInicial, UsuarioId = usuarioId };
         await _contas.AdicionarAsync(conta);
         return new ContaResponseDto(conta.Id, conta.Tipo, conta.Saldo, conta.UsuarioId);
@@ -96,6 +105,7 @@ public class ContaService
     public async Task TransferirAsync(int origemId, int usuarioId, int destinoId, decimal valor)
     {
         if (valor <= 0) throw new InvalidOperationException("O valor deve ser maior que zero.");
+        if (origemId == destinoId) throw new InvalidOperationException("A conta de destino deve ser diferente da conta de origem.");
 
         var origem = await ValidarContaDoUsuario(origemId, usuarioId);
         var destino = await _contas.ObterPorIdAsync(destinoId) ?? throw new KeyNotFoundException("Conta destino nao encontrada.");
